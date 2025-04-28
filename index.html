@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HIXY Studio - Impression Professionnelle & Création Graphique</title>
-    <meta name="description" content="4 talents, une seule empreinte. Votre partenaire en impression professionnelle et création graphique.">
+    <title>HIXY Studio - Innovation Graphique & Impression d'Excellence</title>
+    <meta name="description" content="4 talents unis pour sublimer votre communication visuelle. Expertise en impression haut de gamme et création graphique sur-mesure.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,18 +14,20 @@
                 extend: {
                     colors: {
                         cyan: {
-                            DEFAULT: '#00AEEF',
-                            light: 'rgba(0, 174, 239, 0.1)'
+                            DEFAULT: '#00F0FF',
+                            light: 'rgba(0, 240, 255, 0.1)'
                         },
                         magenta: {
-                            DEFAULT: '#EC008C',
-                            light: 'rgba(236, 0, 140, 0.1)'
+                            DEFAULT: '#FF00F5',
+                            light: 'rgba(255, 0, 245, 0.1)'
                         },
-                        yellow: '#FFF200',
-                        black: '#000000',
+                        yellow: '#FFEE00',
+                        black: '#0A0A0A',
+                        dark: '#121212'
                     },
                     fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Clash Display"', 'sans-serif']
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
@@ -33,11 +35,21 @@
                         'float-3': 'float 10s ease-in-out infinite',
                         'spin-slow': 'spin 20s linear infinite',
                         'pulse-slow': 'pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'text-gradient': 'text-gradient 6s ease infinite',
+                        'gradient-border': 'gradient-border 4s ease infinite'
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'text-gradient': {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' }
+                        },
+                        'gradient-border': {
+                            '0%, 100%': { 'border-color': '#00F0FF' },
+                            '50%': { 'border-color': '#FF00F5' }
                         }
                     }
                 }
@@ -46,7 +58,8 @@
     </script>
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/clash-display" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -55,60 +68,69 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     
-    <!-- SplideJS for testimonials -->
+    <!-- SplideJS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     
-    <!-- Lenis for smooth scrolling -->
+    <!-- Lenis smooth scroll -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
     
     <style type="text/css">
         /* Custom styles */
+        body {
+            background-color: #0A0A0A;
+            color: #FAFAFA;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #00d5ff 0%, #FF00F5 50%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% 200%;
+            animation: text-gradient 6s ease infinite;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #00F0FF 0%, #FF00F5 100%);
+            background-size: 200% 200%;
+            animation: text-gradient 8s ease infinite;
+        }
+        
+        .gradient-border {
+            position: relative;
+            border: 2px solid transparent;
+            animation: gradient-border 4s ease infinite;
+        }
+        
+        .glass-effect {
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .printer-animation {
+            transform-style: preserve-3d;
+            transform: perspective(1000px) rotateX(15deg) rotateY(-5deg);
+        }
+        
+        .parallax-image {
+            will-change: transform;
+        }
+        
         .text-stroke {
             -webkit-text-stroke: 1px currentColor;
             text-stroke: 1px currentColor;
             color: transparent;
         }
         
-        .gradient-text {
-            background: linear-gradient(90deg, #00AEEF 0%, #EC008C 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .hover-scale {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
-        .gradient-bg {
-            background: linear-gradient(90deg, #00AEEF 0%, #EC008C 100%);
-        }
-        
-        .perspective {
-            transform-style: preserve-3d;
-        }
-        
-        .rotate-y {
-            transform: rotateY(10deg);
-        }
-        
-        .rotate-x {
-            transform: rotateX(10deg);
-        }
-        
-        .printer-animation {
-            transform-style: preserve-3d;
-            transform: perspective(1000px) rotateX(20deg) rotateY(-10deg);
-        }
-        
-        .printer-nozzle {
-            animation: nozzle 4s ease-in-out infinite;
-        }
-        
-        @keyframes nozzle {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(20px); }
-        }
-        
-        .hero-image {
-            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, transparent 100%);
+        .hover-scale:hover {
+            transform: scale(1.03);
         }
         
         .service-card:hover .service-icon {
@@ -116,7 +138,8 @@
         }
         
         .team-card:hover {
-            transform: translateY(-10px) rotateY(5deg);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
         .floating-shape {
@@ -132,94 +155,198 @@
             animation: float 12s ease-in-out infinite;
             animation-delay: 2s;
         }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#00F0FF, #FF00F5);
+            border-radius: 10px;
+        }
+        
+        /* Hero section overlay */
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.8) 0%, rgba(10, 10, 10, 0.4) 100%);
+        }
+        
+        /* Printer nozzle animation */
+        .printer-nozzle {
+            animation: nozzle 4s ease-in-out infinite;
+        }
+        
+        @keyframes nozzle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(20px); }
+        }
     </style>
 </head>
-<body class="font-sans antialiased text-gray-800 bg-white">
+<body class="font-sans antialiased">
     <!-- Smooth scroll wrapper -->
     <div id="smooth-wrapper">
         <div id="smooth-content">
+            <!-- Preloader -->
+            <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-black">
+                <div class="relative w-32 h-32">
+                    <div class="absolute inset-0 border-4 border-transparent border-t-cyan rounded-full animate-spin"></div>
+                    <div class="absolute inset-0 border-4 border-transparent border-b-magenta rounded-full animate-spin animation-delay-500"></div>
+                    <div class="flex items-center justify-center w-full h-full">
+                        <div class="w-16 h-16 bg-gradient-to-r from-cyan to-magenta rounded-full animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Header -->
-            <header id="header" class="fixed w-full z-50 transition-all duration-500">
-                <div class="container mx-auto px-6 py-4">
+            <header id="header" class="fixed w-full z-40 transition-all duration-500 py-4">
+                <div class="container mx-auto px-6">
                     <div class="flex justify-between items-center">
                         <a href="#" class="text-3xl font-bold">
-                            <img src="images/logo.png" width="70px" alt="">
+                            <img src="images/logo.png" width="90px">
                         </a>
                         
-                        <nav class="hidden md:flex items-center space-x-8">
-                            <a href="#services" class="font-medium hover:text-magenta transition-colors duration-300">Services</a>
-                            <a href="#about" class="font-medium hover:text-magenta transition-colors duration-300">À propos</a>
-                            <a href="#portfolio" class="font-medium hover:text-magenta transition-colors duration-300">Portfolio</a>
-                            <a href="#team" class="font-medium hover:text-magenta transition-colors duration-300">Équipe</a>
-                            <a href="#contact" class="font-medium hover:text-magenta transition-colors duration-300">Contact</a>
-                            <a href="#contact" class="bg-gradient-to-r from-cyan to-magenta text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300">Devis gratuit</a>
+                        <nav class="hidden lg:flex items-center space-x-8">
+                            <a href="#services" class="font-medium hover:text-cyan transition-colors duration-300 relative group">
+                                Services
+                                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                            <a href="#about" class="font-medium hover:text-cyan transition-colors duration-300 relative group">
+                                Expertise
+                                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                            <a href="#portfolio" class="font-medium hover:text-cyan transition-colors duration-300 relative group">
+                                Réalisations
+                                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                            <a href="#team" class="font-medium hover:text-cyan transition-colors duration-300 relative group">
+                                Équipe
+                                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                            <a href="#contact" class="font-medium hover:text-cyan transition-colors duration-300 relative group">
+                                Contact
+                                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                            <a href="#contact" class="relative px-6 py-2 rounded-full font-semibold group overflow-hidden">
+                                <span class="absolute inset-0 bg-gradient-to-r from-cyan to-magenta group-hover:opacity-90 transition-opacity duration-300"></span>
+                                <span class="relative z-10 flex items-center">
+                                    Devis gratuit
+                                    <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                                </span>
+                            </a>
                         </nav>
                         
-                        <button id="mobile-menu-button" class="md:hidden text-2xl">
+                        <button id="mobile-menu-button" class="lg:hidden text-2xl z-50">
                             <i class="fas fa-bars"></i>
                         </button>
                     </div>
                 </div>
                 
                 <!-- Mobile menu -->
-                <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-8">
-                    <button id="close-menu" class="absolute top-6 right-6 text-3xl">
+                <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-30 flex flex-col items-center justify-center space-y-8 p-6">
+                    <button id="close-menu" class="absolute top-6 right-6 text-3xl text-white">
                         <i class="fas fa-times"></i>
                     </button>
-                    <a href="#services" class="text-2xl font-medium hover:text-magenta">Services</a>
-                    <a href="#about" class="text-2xl font-medium hover:text-magenta">À propos</a>
-                    <a href="#portfolio" class="text-2xl font-medium hover:text-magenta">Portfolio</a>
-                    <a href="#team" class="text-2xl font-medium hover:text-magenta">Équipe</a>
-                    <a href="#contact" class="text-2xl font-medium hover:text-magenta">Contact</a>
-                    <a href="#contact" class="bg-gradient-to-r from-cyan to-magenta text-white px-8 py-3 rounded-full font-semibold text-xl mt-4">Devis gratuit</a>
+                    <a href="#services" class="text-3xl font-medium hover:text-cyan transition-colors duration-300">Services</a>
+                    <a href="#about" class="text-3xl font-medium hover:text-cyan transition-colors duration-300">Expertise</a>
+                    <a href="#portfolio" class="text-3xl font-medium hover:text-cyan transition-colors duration-300">Réalisations</a>
+                    <a href="#team" class="text-3xl font-medium hover:text-cyan transition-colors duration-300">Équipe</a>
+                    <a href="#contact" class="text-3xl font-medium hover:text-cyan transition-colors duration-300">Contact</a>
+                    <a href="#contact" class="mt-8 px-8 py-4 rounded-full font-semibold text-xl relative group overflow-hidden">
+                        <span class="absolute inset-0 bg-gradient-to-r from-cyan to-magenta group-hover:opacity-90 transition-opacity duration-300"></span>
+                        <span class="relative z-10 flex items-center">
+                            Devis gratuit
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </span>
+                    </a>
                 </div>
             </header>
 
             <!-- Hero Section -->
-            <section class="relative h-screen flex items-center pt-20 overflow-hidden">
+            <section class="relative h-screen flex items-center pt-16 overflow-hidden">
+                <!-- Background video -->
+                <div class="absolute inset-0 z-0 overflow-hidden">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-40">
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-ink-in-water-1182-large.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 hero-overlay"></div>
+                </div>
+                
                 <!-- Floating shapes -->
-                <div class="absolute inset-0 overflow-hidden">
-                    <div class="absolute w-16 h-16 rounded-full bg-cyan opacity-20 top-1/4 left-10 animation-float"></div>
-                    <div class="absolute w-24 h-24 rounded-full bg-magenta opacity-20 bottom-1/4 right-20 animation-float-2"></div>
-                    <div class="absolute w-32 h-32 rounded-full bg-yellow opacity-20 top-1/3 right-1/4 animation-float-3"></div>
-                    <div class="absolute w-20 h-20 rounded-full bg-cyan opacity-20 bottom-1/3 left-1/4 animation-float"></div>
+                <div class="absolute inset-0 overflow-hidden z-1">
+                    <div class="absolute w-32 h-32 rounded-full bg-cyan opacity-10 top-1/4 left-10 animation-float"></div>
+                    <div class="absolute w-48 h-48 rounded-full bg-magenta opacity-10 bottom-1/4 right-20 animation-float-2"></div>
+                    <div class="absolute w-64 h-64 rounded-full bg-yellow opacity-10 top-1/3 right-1/4 animation-float-3"></div>
+                    <div class="absolute w-40 h-40 rounded-full bg-cyan opacity-10 bottom-1/3 left-1/4 animation-float"></div>
                 </div>
                 
                 <div class="container mx-auto px-6 relative z-10">
                     <div class="flex flex-col lg:flex-row items-center">
                         <div class="lg:w-1/2 mb-12 lg:mb-0">
-                            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-                                <span class="block">4 talents,</span>
-                                <span class="block gradient-text">une seule empreinte</span>
+                            <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6">
+                                <span class="block text-white">4 talents,</span>
+                                <span class="block gradient-text">une empreinte unique</span>
                             </h1>
-                            <p class="text-xl md:text-2xl text-gray-600 mb-10 max-w-lg">
-                                Votre partenaire en impression professionnelle et création graphique. Qualité, rapidité et solutions écologiques.
+                            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-lg">
+                                Votre partenaire en impression haut de gamme et création graphique sur-mesure. Où l'innovation rencontre la perfection technique.
                             </p>
                             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-                                <a href="#contact" class="bg-gradient-to-r from-cyan to-magenta text-white px-8 py-4 rounded-full font-semibold text-lg text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                                    Commander maintenant
+                                <a href="#contact" class="relative px-8 py-4 rounded-full font-semibold text-lg text-center group overflow-hidden hover-scale">
+                                    <span class="absolute inset-0 bg-gradient-to-r from-cyan to-magenta group-hover:opacity-90 transition-opacity duration-300"></span>
+                                    <span class="relative z-10 flex items-center justify-center">
+                                        Commander maintenant
+                                        <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                                    </span>
                                 </a>
-                                <a href="#services" class="border-2 border-black text-black px-8 py-4 rounded-full font-semibold text-lg text-center hover:bg-black hover:text-white transition-all duration-300 transform hover:-translate-y-1">
-                                    Nos services
+                                <a href="#services" class="relative px-8 py-4 rounded-full font-semibold text-lg text-center group overflow-hidden hover-scale">
+                                    <span class="absolute inset-0 border-2 border-white group-hover:bg-white/10 transition-colors duration-300"></span>
+                                    <span class="relative z-10 flex items-center justify-center">
+                                        Nos services
+                                        <i class="fas fa-chevron-down ml-2"></i>
+                                    </span>
                                 </a>
                             </div>
                         </div>
                         
-                        <div class="lg:w-1/2 perspective">
-                            <div class="relative">
-                                <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2068&q=80" 
-                                     alt="Printing services" 
-                                     class="w-full max-w-xl mx-auto rounded-2xl shadow-2xl rotate-y transform transition-all duration-700 hover:rotate-0">
+                        <div class="lg:w-1/2 flex justify-center">
+                            <div class="relative w-full max-w-xl">
+                                <!-- 3D Printer Illustration -->
+                                <div class="printer-animation relative">
+                                    <div class="relative">
+                                        <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                         alt="Impression 3D haute précision" 
+                                         class="w-full rounded-2xl shadow-2xl border-2 border-white/10 hover-scale transition-transform duration-1000">
+                                        
+                                        <!-- Animated nozzle -->
+                                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 printer-nozzle">
+                                            <div class="w-12 h-12 bg-gradient-to-r from-cyan to-magenta rounded-full flex items-center justify-center shadow-lg">
+                                                <div class="w-4 h-4 bg-black rounded-full"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Floating print effect -->
+                                        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-3/4">
+                                            <div class="bg-white/90 p-4 rounded-lg shadow-lg">
+                                                <div class="h-4 bg-gradient-to-r from-cyan to-magenta mb-2 rounded-full"></div>
+                                                <div class="h-4 bg-gradient-to-r from-magenta to-yellow mb-2 rounded-full"></div>
+                                                <div class="h-4 bg-gradient-to-r from-yellow to-cyan rounded-full"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 
                                 <!-- Floating badge -->
-                                <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-xl rotate-12">
+                                <div class="absolute -bottom-6 -right-6 glass-effect p-4 rounded-xl shadow-xl rotate-12 border border-white/10">
                                     <div class="flex items-center">
-                                        <div class="bg-cyan text-white p-2 rounded-lg mr-3">
-                                            <i class="fas fa-trophy text-xl"></i>
+                                        <div class="bg-gradient-to-r from-cyan to-magenta text-white p-2 rounded-lg mr-3">
+                                            <i class="fas fa-award text-xl"></i>
                                         </div>
                                         <div>
                                             <p class="font-bold text-sm">Qualité Premium</p>
-                                            <p class="text-xs text-gray-500">Certifié ISO 9001</p>
+                                            <p class="text-xs text-gray-400">Certifié ISO 9001</p>
                                         </div>
                                     </div>
                                 </div>
@@ -229,203 +356,233 @@
                 </div>
                 
                 <!-- Scroll indicator -->
-                <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
                     <a href="#services" class="block w-10 h-16 rounded-full border-2 border-gray-400 flex items-center justify-center">
-                        <div class="w-1 h-4 bg-gray-400 rounded-full animate-pulse"></div>
+                        <div class="w-1 h-4 bg-gradient-to-b from-cyan to-magenta rounded-full animate-pulse"></div>
                     </a>
                 </div>
             </section>
 
             <!-- Clients Logo Cloud -->
-            <section class="py-12 bg-gray-50">
+            <section class="py-16 bg-dark">
                 <div class="container mx-auto px-6">
-                    <p class="text-center text-gray-500 mb-10">Ils nous font confiance</p>
-                    <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-70">
-                        <img src="https://via.placeholder.com/120x60?text=Client+1" alt="Client logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300">
-                        <img src="https://via.placeholder.com/120x60?text=Client+2" alt="Client logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300">
-                        <img src="https://via.placeholder.com/120x60?text=Client+3" alt="Client logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300">
-                        <img src="https://via.placeholder.com/120x60?text=Client+4" alt="Client logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300">
-                        <img src="https://via.placeholder.com/120x60?text=Client+5" alt="Client logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300">
+                    <p class="text-center text-gray-400 mb-10 text-lg">Ils nous font confiance</p>
+                    <div class="flex flex-wrap justify-center items-center gap-12 opacity-80">
+                        <img src="https://via.placeholder.com/160x80?text=Client+1&color=ffffff" alt="Client logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="https://via.placeholder.com/160x80?text=Client+2&color=ffffff" alt="Client logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="https://via.placeholder.com/160x80?text=Client+3&color=ffffff" alt="Client logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="https://via.placeholder.com/160x80?text=Client+4&color=ffffff" alt="Client logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="https://via.placeholder.com/160x80?text=Client+5&color=ffffff" alt="Client logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                 </div>
             </section>
 
             <!-- Services Section -->
-<section id="services" class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <span class="inline-block px-4 py-2 bg-cyan-100 text-cyan rounded-full font-medium mb-4">Nos Services</span>
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">Solutions d'impression complètes</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Découvrez notre gamme de services d'impression haut de gamme pour tous vos besoins en communication visuelle.
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Service 1 -->
-            <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1541140134513-85a161dc4a00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                         alt="Impression standard" 
-                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                    <div class="absolute bottom-6 left-6">
-                        <div class="bg-white w-16 h-16 rounded-xl flex items-center justify-center text-3xl text-cyan shadow-lg transition-all duration-500 group-hover:-translate-y-2">
-                            <i class="fas fa-print"></i>
+            <section id="services" class="py-20 bg-black relative overflow-hidden">
+                <!-- Floating background elements -->
+                <div class="absolute inset-0 overflow-hidden opacity-10">
+                    <div class="absolute top-0 left-0 w-64 h-64 rounded-full bg-cyan blur-3xl"></div>
+                    <div class="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-magenta blur-3xl"></div>
+                </div>
+                
+                <div class="container mx-auto px-6 relative">
+                    <div class="text-center mb-20">
+                        <span class="inline-block px-4 py-2 bg-cyan/10 text-cyan rounded-full font-medium mb-4">Nos Services</span>
+                        <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Solutions d'impression <span class="gradient-text">haut de gamme</span></h2>
+                        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                            Découvrez notre gamme complète de services conçus pour répondre à tous vos besoins en communication visuelle.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Service 1 -->
+                        <div class="group glass-effect rounded-2xl overflow-hidden transition-all duration-500 hover-scale border border-white/10">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1541140134513-85a161dc4a00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Impression standard" 
+                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                                <div class="absolute bottom-6 left-6">
+                                    <div class="service-icon bg-gradient-to-r from-cyan to-magenta text-white w-16 h-16 rounded-xl flex items-center justify-center text-3xl shadow-lg transition-all duration-500">
+                                        <i class="fas fa-print"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold mb-4">Impression Standard</h3>
+                                <p class="text-gray-400 mb-6">
+                                    Flyers, brochures, cartes de visite et affiches publicitaires avec une qualité d'impression irréprochable.
+                                </p>
+                                <ul class="space-y-3 mb-6">
+                                    <li class="flex items-center">
+                                        <div class="w-5 h-5 rounded-full bg-gradient-to-r from-cyan to-magenta flex items-center justify-center mr-3">
+                                            <i class="fas fa-check text-xs text-white"></i>
+                                        </div>
+                                        <span>Haute résolution (300dpi+)</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <div class="w-5 h-5 rounded-full bg-gradient-to-r from-cyan to-magenta flex items-center justify-center mr-3">
+                                            <i class="fas fa-check text-xs text-white"></i>
+                                        </div>
+                                        <span>Papiers premium et écologiques</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <div class="w-5 h-5 rounded-full bg-gradient-to-r from-cyan to-magenta flex items-center justify-center mr-3">
+                                            <i class="fas fa-check text-xs text-white"></i>
+                                        </div>
+                                        <span>Options de finition variées</span>
+                                    </li>
+                                </ul>
+                                <a href="#" class="inline-flex items-center font-semibold text-cyan hover:text-magenta transition-colors duration-300">
+                                    Explorer ce service
+                                    <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Service 2 -->
+                        <div class="group glass-effect rounded-2xl overflow-hidden transition-all duration-500 hover-scale border border-white/10">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1579530190412-b35a65e17c8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Grand format" 
+                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                                <div class="absolute bottom-6 left-6">
+                                    <div class="service-icon bg-gradient-to-r from-cyan to-magenta text-white w-16 h-16 rounded-xl flex items-center justify-center text-3xl shadow-lg transition-all duration-500">
+                                        <i class="fas fa-expand"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold mb-4">Grand Format</h3>
+                                <p class="text-gray-400 mb-6">
+                                    Bâches, panneaux publicitaires, roll-ups et autres supports de grande taille pour une visibilité maximale.
+                                </p>
+                                <ul class="space-y-3 mb-6">
+                                    <li class="flex items-center">
+                                        <div class="w-5 h-5 rounded-full bg-gradient-to-r from-cyan to-magenta flex items-center justify-center mr-3">
+                                            <i class="fas fa-check text-xs text-white"></i>
+                                        </div>
+                                        <span>Jusqu'à 5m de largeur</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <div class="w-5 h-5 rounded-full bg-gradient-to-r from-cyan to-magenta flex items-center justify-center mr-3">
+                                            <i class="fas fa-check text-xs text-white"></i>
+                                        </div>
+                                        <span>Résistant aux intempéries</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <div class="w-5 h-5 rounded-full bg-gradient-to-r from-cyan to-magenta flex items-center justify-center mr-3">
+                                            <i class="fas fa-check text-xs text-white"></i>
+                                        </div>
+                                        <span>Installation professionnelle incluse</span>
+                                    </li>
+                                </ul>
+                                <a href="#" class="inline-flex items-center font-semibold text-cyan hover:text-magenta transition-colors duration-300">
+                                    Explorer ce service
+                                    <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Service 3 -->
+                        <div class="group glass-effect rounded-2xl overflow-hidden transition-all duration-500 hover-scale border border-white/10">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1545239351-ef35f43d514b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Création graphique" 
+                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                                <div class="absolute bottom-6 left-6">
+                                    <div class="service-icon bg-gradient-to-r from-cyan to-magenta text-white w-16 h-16 rounded-xl flex items-center justify-center text-3xl shadow-lg transition-all duration-500">
+                                        <i class="fas fa-pen-fancy"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold mb-4">Création Graphique</h3>
+                                <p class="text-gray-400 mb-6">
+                                    Notre équipe de designers crée des visuels percutants qui renforcent votre identité visuelle.
+                                </p>
+                                <ul class="space-y-3 mb-6">
+                                    <li class="flex items-center">
+                                        <div class="w-5 h-5 rounded-full bg-gradient-to-r from-cyan to-magenta flex items-center justify-center mr-3">
+                                            <i class="fas fa-check text-xs text-white"></i>
+                                        </div>
+                                        <span>Design personnalisé sur-mesure</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <div class="w-5 h-5 rounded-full bg-gradient-to-r from-cyan to-magenta flex items-center justify-center mr-3">
+                                            <i class="fas fa-check text-xs text-white"></i>
+                                        </div>
+                                        <span>Charte graphique complète</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <div class="w-5 h-5 rounded-full bg-gradient-to-r from-cyan to-magenta flex items-center justify-center mr-3">
+                                            <i class="fas fa-check text-xs text-white"></i>
+                                        </div>
+                                        <span>Conseils d'experts en branding</span>
+                                    </li>
+                                </ul>
+                                <a href="#" class="inline-flex items-center font-semibold text-cyan hover:text-magenta transition-colors duration-300">
+                                    Explorer ce service
+                                    <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="p-8">
-                    <h3 class="text-2xl font-bold mb-4">Impression Standard</h3>
-                    <p class="text-gray-600 mb-6">
-                        Flyers, brochures, cartes de visite et affiches publicitaires avec une qualité d'impression irréprochable.
-                    </p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-magenta mr-2"></i>
-                            <span>Haute résolution</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-magenta mr-2"></i>
-                            <span>Papiers premium</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-magenta mr-2"></i>
-                            <span>Options écologiques</span>
-                        </li>
-                    </ul>
-                    <a href="#" class="inline-flex items-center font-semibold text-cyan hover:text-magenta transition-colors duration-300">
-                        En savoir plus
-                        <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Service 2 -->
-            <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1579530190412-b35a65e17c8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                         alt="Grand format" 
-                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                    <div class="absolute bottom-6 left-6">
-                        <div class="bg-white w-16 h-16 rounded-xl flex items-center justify-center text-3xl text-cyan shadow-lg transition-all duration-500 group-hover:-translate-y-2">
-                            <i class="fas fa-expand"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-8">
-                    <h3 class="text-2xl font-bold mb-4">Grand Format</h3>
-                    <p class="text-gray-600 mb-6">
-                        Bâches, panneaux publicitaires, roll-ups et autres supports de grande taille pour une visibilité maximale.
-                    </p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-magenta mr-2"></i>
-                            <span>Jusqu'à 5m de large</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-magenta mr-2"></i>
-                            <span>Résistant aux intempéries</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-magenta mr-2"></i>
-                            <span>Installation incluse</span>
-                        </li>
-                    </ul>
-                    <a href="#" class="inline-flex items-center font-semibold text-cyan hover:text-magenta transition-colors duration-300">
-                        En savoir plus
-                        <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Service 3 -->
-            <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1545239351-ef35f43d514b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
-                         alt="Création graphique" 
-                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                    <div class="absolute bottom-6 left-6">
-                        <div class="bg-white w-16 h-16 rounded-xl flex items-center justify-center text-3xl text-cyan shadow-lg transition-all duration-500 group-hover:-translate-y-2">
-                            <i class="fas fa-pen-fancy"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-8">
-                    <h3 class="text-2xl font-bold mb-4">Création Graphique</h3>
-                    <p class="text-gray-600 mb-6">
-                        Notre équipe de designers crée des visuels percutants qui renforcent votre identité visuelle.
-                    </p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-magenta mr-2"></i>
-                            <span>Design personnalisé</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-magenta mr-2"></i>
-                            <span>Charte graphique</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-magenta mr-2"></i>
-                            <span>Conseils experts</span>
-                        </li>
-                    </ul>
-                    <a href="#" class="inline-flex items-center font-semibold text-cyan hover:text-magenta transition-colors duration-300">
-                        En savoir plus
-                        <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+            </section>
 
             <!-- About Section -->
-            <section id="about" class="py-20 bg-gray-50">
-                <div class="container mx-auto px-6">
+            <section id="about" class="py-20 bg-dark relative overflow-hidden">
+                <!-- Floating background elements -->
+                <div class="absolute inset-0 overflow-hidden opacity-10">
+                    <div class="absolute top-0 right-0 w-64 h-64 rounded-full bg-yellow blur-3xl"></div>
+                    <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-cyan blur-3xl"></div>
+                </div>
+                
+                <div class="container mx-auto px-6 relative">
                     <div class="flex flex-col lg:flex-row items-center">
                         <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
-                            <span class="inline-block px-4 py-2 bg-magenta-100 text-magenta rounded-full font-medium mb-4">À propos</span>
-                            <h2 class="text-4xl md:text-5xl font-bold mb-8">Pourquoi choisir HIXY Studio ?</h2>
-                            <p class="text-xl text-gray-600 mb-8">
+                            <span class="inline-block px-4 py-2 bg-magenta/10 text-magenta rounded-full font-medium mb-4">Notre Expertise</span>
+                            <h2 class="text-4xl md:text-5xl font-display font-bold mb-8">Pourquoi <span class="gradient-text">choisir HIXY</span> ?</h2>
+                            <p class="text-xl text-gray-400 mb-8">
                                 Fondé par quatre jeunes entrepreneurs passionnés, HIXY Studio combine expertise technique et créativité pour offrir des solutions d'impression innovantes.
                             </p>
                             
                             <div class="space-y-6 mb-10">
-                                <div class="flex items-start">
-                                    <div class="bg-cyan text-white p-3 rounded-lg mr-4 flex-shrink-0">
+                                <div class="flex items-start glass-effect p-5 rounded-xl border border-white/10">
+                                    <div class="bg-gradient-to-r from-cyan to-magenta text-white p-3 rounded-lg mr-4 flex-shrink-0">
                                         <i class="fas fa-leaf text-xl"></i>
                                     </div>
                                     <div>
                                         <h4 class="text-xl font-bold mb-2">Éco-responsable</h4>
-                                        <p class="text-gray-600">
-                                            Nous utilisons des encres végétales et des papiers recyclés pour réduire notre impact environnemental.
+                                        <p class="text-gray-400">
+                                            Nous utilisons des encres végétales, des papiers recyclés et des procédés à faible impact environnemental.
                                         </p>
                                     </div>
                                 </div>
                                 
-                                <div class="flex items-start">
-                                    <div class="bg-magenta text-white p-3 rounded-lg mr-4 flex-shrink-0">
-                                        <i class="fas fa-tachometer-alt text-xl"></i>
+                                <div class="flex items-start glass-effect p-5 rounded-xl border border-white/10">
+                                    <div class="bg-gradient-to-r from-magenta to-yellow text-white p-3 rounded-lg mr-4 flex-shrink-0">
+                                        <i class="fas fa-bolt text-xl"></i>
                                     </div>
                                     <div>
                                         <h4 class="text-xl font-bold mb-2">Rapidité d'exécution</h4>
-                                        <p class="text-gray-600">
+                                        <p class="text-gray-400">
                                             Livraison express en 24h pour la plupart de nos produits, sans compromis sur la qualité.
                                         </p>
                                     </div>
                                 </div>
                                 
-                                <div class="flex items-start">
-                                    <div class="bg-yellow text-black p-3 rounded-lg mr-4 flex-shrink-0">
+                                <div class="flex items-start glass-effect p-5 rounded-xl border border-white/10">
+                                    <div class="bg-gradient-to-r from-yellow to-cyan text-black p-3 rounded-lg mr-4 flex-shrink-0">
                                         <i class="fas fa-medal text-xl"></i>
                                     </div>
                                     <div>
                                         <h4 class="text-xl font-bold mb-2">Qualité Premium</h4>
-                                        <p class="text-gray-600">
-                                            Matériaux haut de gamme et contrôle qualité strict pour des résultats impeccables.
+                                        <p class="text-gray-400">
+                                            Matériaux haut de gamme et contrôle qualité strict pour des résultats impeccables à chaque fois.
                                         </p>
                                     </div>
                                 </div>
@@ -437,35 +594,33 @@
                             </a>
                         </div>
                         
-                        <div class="lg:w-1/2 perspective">
-                            <div class="relative">
-                                <div class="bg-white p-6 rounded-2xl shadow-xl rotate-y transform transition-all duration-700 hover:rotate-0">
-                                    <div class="grid grid-cols-2 gap-6">
-                                        <div class="bg-cyan-50 p-6 rounded-xl text-center">
-                                            <div class="text-5xl font-bold text-cyan mb-2">100%</div>
-                                            <p class="text-gray-600">Satisfaction client</p>
-                                        </div>
-                                        <div class="bg-magenta-50 p-6 rounded-xl text-center">
-                                            <div class="text-5xl font-bold text-magenta mb-2">24h</div>
-                                            <p class="text-gray-600">Livraison express</p>
-                                        </div>
-                                        <div class="bg-yellow-50 p-6 rounded-xl text-center">
-                                            <div class="text-5xl font-bold text-yellow mb-2">50+</div>
-                                            <p class="text-gray-600">Projets réalisés</p>
-                                        </div>
-                                        <div class="bg-black/5 p-6 rounded-xl text-center">
-                                            <div class="text-5xl font-bold text-black mb-2">4</div>
-                                            <p class="text-gray-600">Talents complémentaires</p>
-                                        </div>
+                        <div class="lg:w-1/2">
+                            <div class="glass-effect p-8 rounded-2xl border border-white/10 hover-scale transition-transform duration-500">
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div class="bg-gradient-to-br from-cyan/10 to-cyan/20 p-6 rounded-xl text-center border border-cyan/20">
+                                        <div class="text-5xl font-display font-bold text-cyan mb-2">100%</div>
+                                        <p class="text-gray-400">Satisfaction client</p>
+                                    </div>
+                                    <div class="bg-gradient-to-br from-magenta/10 to-magenta/20 p-6 rounded-xl text-center border border-magenta/20">
+                                        <div class="text-5xl font-display font-bold text-magenta mb-2">24h</div>
+                                        <p class="text-gray-400">Livraison express</p>
+                                    </div>
+                                    <div class="bg-gradient-to-br from-yellow/10 to-yellow/20 p-6 rounded-xl text-center border border-yellow/20">
+                                        <div class="text-5xl font-display font-bold text-yellow mb-2">50+</div>
+                                        <p class="text-gray-400">Projets réalisés</p>
+                                    </div>
+                                    <div class="bg-gradient-to-br from-white/5 to-white/10 p-6 rounded-xl text-center border border-white/10">
+                                        <div class="text-5xl font-display font-bold text-white mb-2">4</div>
+                                        <p class="text-gray-400">Talents complémentaires</p>
                                     </div>
                                 </div>
-                                
-                                <!-- Floating image -->
-                                <div class="absolute -bottom-10 -right-10 w-48 h-48 rounded-2xl overflow-hidden shadow-xl border-4 border-white rotate-12">
-                                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                                         alt="Team working" 
-                                         class="w-full h-full object-cover">
-                                </div>
+                            </div>
+                            
+                            <!-- Floating image -->
+                            <div class="absolute -bottom-10 -right-10 w-64 h-64 rounded-2xl overflow-hidden shadow-xl border-2 border-white/10 rotate-12 hidden lg:block">
+                                <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Team working" 
+                                     class="w-full h-full object-cover">
                             </div>
                         </div>
                     </div>
@@ -473,101 +628,116 @@
             </section>
 
             <!-- Portfolio Section -->
-            <section id="portfolio" class="py-20 bg-white">
-                <div class="container mx-auto px-6">
-                    <div class="text-center mb-16">
-                        <span class="inline-block px-4 py-2 bg-yellow-100 text-yellow rounded-full font-medium mb-4">Portfolio</span>
-                        <h2 class="text-4xl md:text-5xl font-bold mb-6">Nos réalisations</h2>
-                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                            Découvrez quelques-uns de nos projets récents qui ont marqué nos clients.
+            <section id="portfolio" class="py-20 bg-black relative overflow-hidden">
+                <!-- Floating background elements -->
+                <div class="absolute inset-0 overflow-hidden opacity-10">
+                    <div class="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-magenta blur-3xl"></div>
+                    <div class="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-cyan blur-3xl"></div>
+                </div>
+                
+                <div class="container mx-auto px-6 relative">
+                    <div class="text-center mb-20">
+                        <span class="inline-block px-4 py-2 bg-yellow/10 text-yellow rounded-full font-medium mb-4">Nos Réalisations</span>
+                        <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Portfolio <span class="gradient-text">créatif</span></h2>
+                        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                            Découvrez quelques-uns de nos projets récents qui ont marqué nos clients par leur qualité et leur impact.
                         </p>
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <!-- Portfolio item 1 -->
-                        <div class="group relative overflow-hidden rounded-2xl shadow-lg">
-                            <img src="https://images.unsplash.com/photo-1541140134513-85a161dc4a00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                        <div class="group relative overflow-hidden rounded-2xl hover-scale transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1541140134513-85a161dc4a00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
                                  alt="Portfolio item" 
-                                 class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                 class="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                 <h3 class="text-white text-2xl font-bold mb-2">Campagne publicitaire</h3>
                                 <p class="text-gray-300 mb-4">Flyers et affiches pour une marque de luxe</p>
-                                <a href="#" class="inline-flex items-center text-white font-medium">
-                                    Voir le projet
-                                    <i class="fas fa-arrow-right ml-2"></i>
-                                </a>
+                                <div class="flex space-x-4">
+                                    <span class="px-3 py-1 bg-cyan/20 text-cyan text-sm rounded-full">Impression</span>
+                                    <span class="px-3 py-1 bg-magenta/20 text-magenta text-sm rounded-full">Design</span>
+                                </div>
                             </div>
                         </div>
                         
                         <!-- Portfolio item 2 -->
-                        <div class="group relative overflow-hidden rounded-2xl shadow-lg">
-                            <img src="https://images.unsplash.com/photo-1579530190412-b35a65e17c8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                        <div class="group relative overflow-hidden rounded-2xl hover-scale transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1579530190412-b35a65e17c8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
                                  alt="Portfolio item" 
-                                 class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                 class="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                 <h3 class="text-white text-2xl font-bold mb-2">Bâche publicitaire</h3>
                                 <p class="text-gray-300 mb-4">Grand format pour un centre commercial</p>
-                                <a href="#" class="inline-flex items-center text-white font-medium">
-                                    Voir le projet
-                                    <i class="fas fa-arrow-right ml-2"></i>
-                                </a>
+                                <div class="flex space-x-4">
+                                    <span class="px-3 py-1 bg-cyan/20 text-cyan text-sm rounded-full">Grand Format</span>
+                                    <span class="px-3 py-1 bg-yellow/20 text-yellow text-sm rounded-full">Installation</span>
+                                </div>
                             </div>
                         </div>
                         
                         <!-- Portfolio item 3 -->
-                        <div class="group relative overflow-hidden rounded-2xl shadow-lg">
-                            <img src="https://images.unsplash.com/photo-1545239351-ef35f43d514b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                        <div class="group relative overflow-hidden rounded-2xl hover-scale transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1545239351-ef35f43d514b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
                                  alt="Portfolio item" 
-                                 class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                 class="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                 <h3 class="text-white text-2xl font-bold mb-2">Identité visuelle</h3>
-                                <p class="text-gray-300 mb-4">Design complet pour une startup</p>
-                                <a href="#" class="inline-flex items-center text-white font-medium">
-                                    Voir le projet
-                                    <i class="fas fa-arrow-right ml-2"></i>
-                                </a>
+                                <p class="text-gray-300 mb-4">Design complet pour une startup tech</p>
+                                <div class="flex space-x-4">
+                                    <span class="px-3 py-1 bg-magenta/20 text-magenta text-sm rounded-full">Branding</span>
+                                    <span class="px-3 py-1 bg-yellow/20 text-yellow text-sm rounded-full">UI/UX</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="text-center mt-12">
-                        <a href="#" class="inline-flex items-center px-8 py-4 border-2 border-black rounded-full font-semibold text-lg hover:bg-black hover:text-white transition-all duration-300">
-                            Voir tous nos projets
-                            <i class="fas fa-arrow-right ml-2"></i>
+                    <div class="text-center mt-16">
+                        <a href="#" class="inline-flex items-center px-8 py-4 rounded-full font-semibold text-lg group overflow-hidden hover-scale">
+                            <span class="absolute inset-0 border-2 border-white group-hover:bg-white/10 transition-colors duration-300"></span>
+                            <span class="relative z-10 flex items-center">
+                                Voir tous nos projets
+                                <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                            </span>
                         </a>
                     </div>
                 </div>
             </section>
 
             <!-- Process Section -->
-            <section class="py-20 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <div class="text-center mb-16">
-                        <span class="inline-block px-4 py-2 bg-black text-white rounded-full font-medium mb-4">Notre Processus</span>
-                        <h2 class="text-4xl md:text-5xl font-bold mb-6">Comment ça marche ?</h2>
-                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                            Un processus simplifié pour des résultats exceptionnels.
+            <section class="py-20 bg-dark relative overflow-hidden">
+                <!-- Floating background elements -->
+                <div class="absolute inset-0 overflow-hidden opacity-10">
+                    <div class="absolute top-1/3 left-1/4 w-64 h-64 rounded-full bg-cyan blur-3xl"></div>
+                    <div class="absolute bottom-1/3 right-1/4 w-64 h-64 rounded-full bg-magenta blur-3xl"></div>
+                </div>
+                
+                <div class="container mx-auto px-6 relative">
+                    <div class="text-center mb-20">
+                        <span class="inline-block px-4 py-2 bg-white/10 text-white rounded-full font-medium mb-4">Notre Processus</span>
+                        <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Comment nous <span class="gradient-text">travaillons</span> ?</h2>
+                        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                            Un processus simplifié et efficace pour des résultats exceptionnels à chaque étape.
                         </p>
                     </div>
                     
                     <div class="relative">
                         <!-- Timeline -->
-                        <div class="hidden lg:block absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-cyan to-magenta transform -translate-x-1/2"></div>
+                        <div class="hidden lg:block absolute left-1/2 top-0 h-full w-0.5 bg-gradient-to-b from-cyan via-magenta to-yellow transform -translate-x-1/2"></div>
                         
                         <div class="space-y-16 lg:space-y-0">
                             <!-- Step 1 -->
                             <div class="relative lg:flex lg:items-center lg:justify-between">
                                 <div class="lg:w-5/12 lg:pr-12 mb-8 lg:mb-0 text-right">
-                                    <div class="inline-block bg-white p-6 rounded-2xl shadow-lg">
+                                    <div class="inline-block glass-effect p-6 rounded-2xl border border-white/10 hover-scale transition-transform duration-500">
                                         <div class="flex items-center justify-end">
                                             <div class="ml-4">
-                                                <span class="inline-block px-4 py-1 bg-cyan text-white rounded-full text-sm font-medium mb-2">Étape 1</span>
+                                                <span class="inline-block px-4 py-1 bg-cyan/20 text-cyan rounded-full text-sm font-medium mb-2">Étape 1</span>
                                                 <h3 class="text-2xl font-bold mb-2">Consultation</h3>
-                                                <p class="text-gray-600">
-                                                    Nous discutons de vos besoins, objectifs et contraintes pour proposer la meilleure solution.
+                                                <p class="text-gray-400">
+                                                    Nous analysons vos besoins, objectifs et contraintes pour concevoir la solution optimale.
                                                 </p>
                                             </div>
-                                            <div class="bg-cyan text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shrink-0">
+                                            <div class="bg-gradient-to-r from-cyan to-magenta text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shrink-0">
                                                 1
                                             </div>
                                         </div>
@@ -575,7 +745,7 @@
                                 </div>
                                 
                                 <div class="hidden lg:block w-2/12 text-center">
-                                    <div class="bg-white border-4 border-cyan w-12 h-12 rounded-full flex items-center justify-center mx-auto z-10 relative">
+                                    <div class="glass-effect border-2 border-cyan w-12 h-12 rounded-full flex items-center justify-center mx-auto z-10 relative">
                                         <i class="fas fa-comments text-cyan text-xl"></i>
                                     </div>
                                 </div>
@@ -588,22 +758,22 @@
                                 <div class="lg:w-5/12"></div>
                                 
                                 <div class="hidden lg:block w-2/12 text-center">
-                                    <div class="bg-white border-4 border-magenta w-12 h-12 rounded-full flex items-center justify-center mx-auto z-10 relative">
+                                    <div class="glass-effect border-2 border-magenta w-12 h-12 rounded-full flex items-center justify-center mx-auto z-10 relative">
                                         <i class="fas fa-pencil-ruler text-magenta text-xl"></i>
                                     </div>
                                 </div>
                                 
                                 <div class="lg:w-5/12 lg:pl-12">
-                                    <div class="inline-block bg-white p-6 rounded-2xl shadow-lg">
+                                    <div class="inline-block glass-effect p-6 rounded-2xl border border-white/10 hover-scale transition-transform duration-500">
                                         <div class="flex items-center">
-                                            <div class="bg-magenta text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shrink-0 mr-4">
+                                            <div class="bg-gradient-to-r from-magenta to-yellow text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shrink-0 mr-4">
                                                 2
                                             </div>
                                             <div>
-                                                <span class="inline-block px-4 py-1 bg-magenta text-white rounded-full text-sm font-medium mb-2">Étape 2</span>
+                                                <span class="inline-block px-4 py-1 bg-magenta/20 text-magenta rounded-full text-sm font-medium mb-2">Étape 2</span>
                                                 <h3 class="text-2xl font-bold mb-2">Conception</h3>
-                                                <p class="text-gray-600">
-                                                    Notre équipe créative développe des designs sur-mesure qui correspondent à votre identité.
+                                                <p class="text-gray-400">
+                                                    Nos designers créent des maquettes sur-mesure qui incarnent parfaitement votre identité.
                                                 </p>
                                             </div>
                                         </div>
@@ -614,16 +784,16 @@
                             <!-- Step 3 -->
                             <div class="relative lg:flex lg:items-center lg:justify-between">
                                 <div class="lg:w-5/12 lg:pr-12 mb-8 lg:mb-0 text-right">
-                                    <div class="inline-block bg-white p-6 rounded-2xl shadow-lg">
+                                    <div class="inline-block glass-effect p-6 rounded-2xl border border-white/10 hover-scale transition-transform duration-500">
                                         <div class="flex items-center justify-end">
                                             <div class="ml-4">
-                                                <span class="inline-block px-4 py-1 bg-yellow text-black rounded-full text-sm font-medium mb-2">Étape 3</span>
+                                                <span class="inline-block px-4 py-1 bg-yellow/20 text-yellow rounded-full text-sm font-medium mb-2">Étape 3</span>
                                                 <h3 class="text-2xl font-bold mb-2">Production</h3>
-                                                <p class="text-gray-600">
-                                                    Nous imprimons vos documents avec des machines de pointe pour une qualité optimale.
+                                                <p class="text-gray-400">
+                                                    Impression haute qualité avec nos machines dernier cri et un contrôle qualité rigoureux.
                                                 </p>
                                             </div>
-                                            <div class="bg-yellow text-black w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shrink-0">
+                                            <div class="bg-gradient-to-r from-yellow to-cyan text-black w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shrink-0">
                                                 3
                                             </div>
                                         </div>
@@ -631,7 +801,7 @@
                                 </div>
                                 
                                 <div class="hidden lg:block w-2/12 text-center">
-                                    <div class="bg-white border-4 border-yellow w-12 h-12 rounded-full flex items-center justify-center mx-auto z-10 relative">
+                                    <div class="glass-effect border-2 border-yellow w-12 h-12 rounded-full flex items-center justify-center mx-auto z-10 relative">
                                         <i class="fas fa-print text-yellow text-xl"></i>
                                     </div>
                                 </div>
@@ -644,22 +814,22 @@
                                 <div class="lg:w-5/12"></div>
                                 
                                 <div class="hidden lg:block w-2/12 text-center">
-                                    <div class="bg-white border-4 border-black w-12 h-12 rounded-full flex items-center justify-center mx-auto z-10 relative">
-                                        <i class="fas fa-truck text-black text-xl"></i>
+                                    <div class="glass-effect border-2 border-white w-12 h-12 rounded-full flex items-center justify-center mx-auto z-10 relative">
+                                        <i class="fas fa-truck text-white text-xl"></i>
                                     </div>
                                 </div>
                                 
                                 <div class="lg:w-5/12 lg:pl-12">
-                                    <div class="inline-block bg-white p-6 rounded-2xl shadow-lg">
+                                    <div class="inline-block glass-effect p-6 rounded-2xl border border-white/10 hover-scale transition-transform duration-500">
                                         <div class="flex items-center">
-                                            <div class="bg-black text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shrink-0 mr-4">
+                                            <div class="bg-white text-black w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shrink-0 mr-4">
                                                 4
                                             </div>
                                             <div>
-                                                <span class="inline-block px-4 py-1 bg-black text-white rounded-full text-sm font-medium mb-2">Étape 4</span>
+                                                <span class="inline-block px-4 py-1 bg-white/20 text-white rounded-full text-sm font-medium mb-2">Étape 4</span>
                                                 <h3 class="text-2xl font-bold mb-2">Livraison</h3>
-                                                <p class="text-gray-600">
-                                                    Nous vous livrons le produit fini dans les délais convenus, prêt à impressionner.
+                                                <p class="text-gray-400">
+                                                    Votre projet est livré dans les délais, prêt à impressionner votre audience.
                                                 </p>
                                             </div>
                                         </div>
@@ -672,147 +842,160 @@
             </section>
 
             <!-- Team Section -->
-<section id="team" class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <span class="inline-block px-4 py-2 bg-magenta-100 text-magenta rounded-full font-medium mb-4">Notre Équipe</span>
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">Rencontrez nos talents</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Découvrez les quatre talents complémentaires qui forment l'ADN de HIXY Studio.
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Team member 1 -->
-            <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" 
-                         alt="Hamza" 
-                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-6">
-                        <h3 class="text-2xl font-bold text-white">Hamza</h3>
-                        <p class="text-cyan">Expert Digital</p>
+            <section id="team" class="py-20 bg-black relative overflow-hidden">
+                <!-- Floating background elements -->
+                <div class="absolute inset-0 overflow-hidden opacity-10">
+                    <div class="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-magenta blur-3xl"></div>
+                    <div class="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full bg-yellow blur-3xl"></div>
+                </div>
+                
+                <div class="container mx-auto px-6 relative">
+                    <div class="text-center mb-20">
+                        <span class="inline-block px-4 py-2 bg-magenta/10 text-magenta rounded-full font-medium mb-4">Notre Équipe</span>
+                        <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Rencontrez <span class="gradient-text">nos talents</span></h2>
+                        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                            Découvrez les quatre experts complémentaires qui forment l'ADN créatif de HIXY Studio.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Team member 1 -->
+                        <div class="group glass-effect rounded-2xl overflow-hidden transition-all duration-500 hover-scale border border-white/10">
+                            <div class="relative h-80 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Hamza" 
+                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 p-6">
+                                    <h3 class="text-2xl font-bold text-white">Hamza</h3>
+                                    <p class="text-cyan">Expert Digital</p>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <p class="text-gray-400 mb-6">
+                                    Spécialiste des technologies numériques et de la gestion des systèmes d'impression haute précision.
+                                </p>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-cyan hover:text-white transition-colors duration-300">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-magenta hover:text-white transition-colors duration-300">
+                                        <i class="fab fa-dribbble"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-white hover:text-black transition-colors duration-300">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Team member 2 -->
+                        <div class="group glass-effect rounded-2xl overflow-hidden transition-all duration-500 hover-scale border border-white/10">
+                            <div class="relative h-80 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Ilyass" 
+                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 p-6">
+                                    <h3 class="text-2xl font-bold text-white">Ilyass</h3>
+                                    <p class="text-cyan">Gestion & Relations</p>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <p class="text-gray-400 mb-6">
+                                    Responsable des relations clients et de la gestion stratégique de l'entreprise au quotidien.
+                                </p>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-cyan hover:text-white transition-colors duration-300">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-magenta hover:text-white transition-colors duration-300">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-white hover:text-black transition-colors duration-300">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Team member 3 -->
+                        <div class="group glass-effect rounded-2xl overflow-hidden transition-all duration-500 hover-scale border border-white/10">
+                            <div class="relative h-80 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Yassine" 
+                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 p-6">
+                                    <h3 class="text-2xl font-bold text-white">Yassine</h3>
+                                    <p class="text-cyan">Design & Créativité</p>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <p class="text-gray-400 mb-6">
+                                    Designer graphique talentueux qui donne vie à vos idées avec créativité et précision.
+                                </p>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-cyan hover:text-white transition-colors duration-300">
+                                        <i class="fab fa-behance"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-magenta hover:text-white transition-colors duration-300">
+                                        <i class="fab fa-dribbble"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-white hover:text-black transition-colors duration-300">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Team member 4 -->
+                        <div class="group glass-effect rounded-2xl overflow-hidden transition-all duration-500 hover-scale border border-white/10">
+                            <div class="relative h-80 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Youssef" 
+                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 p-6">
+                                    <h3 class="text-2xl font-bold text-white">Youssef</h3>
+                                    <p class="text-cyan">Marketing & Stratégie</p>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <p class="text-gray-400 mb-6">
+                                    Expert en marketing qui développe des stratégies pour maximiser l'impact de vos impressions.
+                                </p>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-cyan hover:text-white transition-colors duration-300">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-magenta hover:text-white transition-colors duration-300">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-white hover:text-black transition-colors duration-300">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="p-6">
-                    <p class="text-gray-600 mb-6">
-                        Spécialiste des technologies numériques et de la gestion des systèmes d'impression.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-cyan hover:text-white transition-colors duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-magenta hover:text-white transition-colors duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-black hover:text-white transition-colors duration-300">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Team member 2 -->
-            <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="https://randomuser.me/api/portraits/men/22.jpg" 
-                         alt="Ilyass" 
-                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-6">
-                        <h3 class="text-2xl font-bold text-white">Ilyass</h3>
-                        <p class="text-cyan">Gestion & Relations</p>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <p class="text-gray-600 mb-6">
-                        Responsable des relations clients et de la gestion quotidienne de l'entreprise.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-cyan hover:text-white transition-colors duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-magenta hover:text-white transition-colors duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-black hover:text-white transition-colors duration-300">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Team member 3 -->
-            <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="images/yassine.jpeg" 
-                         alt="Yassine" 
-                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-6">
-                        <h3 class="text-2xl font-bold text-white">Yassine</h3>
-                        <p class="text-cyan">Design & Créativité</p>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <p class="text-gray-600 mb-6">
-                        Designer graphique talentueux qui donne vie à vos idées avec créativité et précision.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-cyan hover:text-white transition-colors duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-magenta hover:text-white transition-colors duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-black hover:text-white transition-colors duration-300">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Team member 4 -->
-            <div class="group bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="https://randomuser.me/api/portraits/men/67.jpg" 
-                         alt="Youssef" 
-                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-6">
-                        <h3 class="text-2xl font-bold text-white">Youssef</h3>
-                        <p class="text-cyan">Marketing & Stratégie</p>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <p class="text-gray-600 mb-6">
-                        Expert en marketing qui développe des stratégies pour maximiser l'impact de vos impressions.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-cyan hover:text-white transition-colors duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-magenta hover:text-white transition-colors duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-black hover:text-white transition-colors duration-300">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+            </section>
+
             <!-- Testimonials Section -->
-            <section class="py-20 gradient-bg text-white">
-                <div class="container mx-auto px-6">
-                    <div class="text-center mb-16">
-                        <span class="inline-block px-4 py-2 bg-white/20 rounded-full font-medium mb-4">Témoignages</span>
-                        <h2 class="text-4xl md:text-5xl font-bold mb-6">Ce que disent nos clients</h2>
+            <section class="py-20 gradient-bg relative overflow-hidden">
+                <!-- Floating background elements -->
+                <div class="absolute inset-0 overflow-hidden opacity-20">
+                    <div class="absolute top-0 left-0 w-64 h-64 rounded-full bg-white blur-3xl"></div>
+                    <div class="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-white blur-3xl"></div>
+                </div>
+                
+                <div class="container mx-auto px-6 relative">
+                    <div class="text-center mb-20">
+                        <span class="inline-block px-4 py-2 bg-white/20 text-white rounded-full font-medium mb-4">Témoignages</span>
+                        <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Ce que disent <span class="text-white">nos clients</span></h2>
                         <p class="text-xl text-white/90 max-w-3xl mx-auto">
-                            Découvrez les témoignages de ceux qui nous ont fait confiance pour leurs projets d'impression.
+                            Découvrez les témoignages de ceux qui nous ont fait confiance pour leurs projets d'impression et création graphique.
                         </p>
                     </div>
                     
@@ -820,58 +1003,79 @@
                         <div class="splide__track">
                             <ul class="splide__list">
                                 <li class="splide__slide">
-                                    <div class="bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-2xl max-w-4xl mx-auto">
+                                    <div class="bg-white/10 backdrop-blur-lg p-8 md:p-12 rounded-2xl max-w-4xl mx-auto border border-white/20">
                                         <div class="text-center">
                                             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 mb-6">
-                                                <i class="fas fa-quote-left text-2xl text-white/50"></i>
+                                                <i class="fas fa-quote-left text-xl text-white/70"></i>
                                             </div>
-                                            <p class="text-xl md:text-2xl italic mb-8">
+                                            <p class="text-xl md:text-2xl italic text-white mb-8">
                                                 "HIXY Studio a réalisé l'impression de nos catalogues avec un professionnalisme remarquable. La qualité est excellente et le respect des délais impeccable. Nous recommandons vivement !"
                                             </p>
                                             <div class="flex flex-col items-center">
-                                                <img src="https://randomuser.me/api/portraits/women/44.jpg" 
+                                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
                                                      alt="Fatima Zahra" 
-                                                     class="w-16 h-16 rounded-full border-4 border-white mb-4">
-                                                <h4 class="text-xl font-bold">Fatima Zahra</h4>
+                                                     class="w-16 h-16 rounded-full border-4 border-white mb-4 object-cover">
+                                                <h4 class="text-xl font-bold text-white">Fatima Zahra</h4>
                                                 <p class="text-white/80">Directrice Marketing, Entreprise XYZ</p>
+                                                <div class="flex mt-2 text-yellow">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="splide__slide">
-                                    <div class="bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-2xl max-w-4xl mx-auto">
+                                    <div class="bg-white/10 backdrop-blur-lg p-8 md:p-12 rounded-2xl max-w-4xl mx-auto border border-white/20">
                                         <div class="text-center">
                                             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 mb-6">
-                                                <i class="fas fa-quote-left text-2xl text-white/50"></i>
+                                                <i class="fas fa-quote-left text-xl text-white/70"></i>
                                             </div>
-                                            <p class="text-xl md:text-2xl italic mb-8">
+                                            <p class="text-xl md:text-2xl italic text-white mb-8">
                                                 "Le travail de création graphique réalisé par HIXY Studio a complètement transformé notre identité visuelle. Leur approche créative et professionnelle a dépassé nos attentes."
                                             </p>
                                             <div class="flex flex-col items-center">
-                                                <img src="https://randomuser.me/api/portraits/men/32.jpg" 
+                                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
                                                      alt="Karim Alami" 
-                                                     class="w-16 h-16 rounded-full border-4 border-white mb-4">
-                                                <h4 class="text-xl font-bold">Karim Alami</h4>
+                                                     class="w-16 h-16 rounded-full border-4 border-white mb-4 object-cover">
+                                                <h4 class="text-xl font-bold text-white">Karim Alami</h4>
                                                 <p class="text-white/80">PDG, Startup Innovante</p>
+                                                <div class="flex mt-2 text-yellow">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="splide__slide">
-                                    <div class="bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-2xl max-w-4xl mx-auto">
+                                    <div class="bg-white/10 backdrop-blur-lg p-8 md:p-12 rounded-2xl max-w-4xl mx-auto border border-white/20">
                                         <div class="text-center">
                                             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 mb-6">
-                                                <i class="fas fa-quote-left text-2xl text-white/50"></i>
+                                                <i class="fas fa-quote-left text-xl text-white/70"></i>
                                             </div>
-                                            <p class="text-xl md:text-2xl italic mb-8">
+                                            <p class="text-xl md:text-2xl italic text-white mb-8">
                                                 "La rapidité d'exécution et la qualité des impressions grand format pour notre événement étaient impressionnantes. Nous avons reçu de nombreux compliments sur les visuels."
                                             </p>
                                             <div class="flex flex-col items-center">
-                                                <img src="https://randomuser.me/api/portraits/women/68.jpg" 
+                                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
                                                      alt="Amina Belhaj" 
-                                                     class="w-16 h-16 rounded-full border-4 border-white mb-4">
-                                                <h4 class="text-xl font-bold">Amina Belhaj</h4>
+                                                     class="w-16 h-16 rounded-full border-4 border-white mb-4 object-cover">
+                                                <h4 class="text-xl font-bold text-white">Amina Belhaj</h4>
                                                 <p class="text-white/80">Organisatrice d'événements</p>
+                                                <div class="flex mt-2 text-yellow">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -883,19 +1087,33 @@
             </section>
 
             <!-- CTA Section -->
-            <section class="py-20 bg-black text-white">
-                <div class="container mx-auto px-6">
-                    <div class="flex flex-col lg:flex-row items-center justify-between">
-                        <div class="lg:w-1/2 mb-10 lg:mb-0">
-                            <h2 class="text-3xl md:text-4xl font-bold mb-6">Prêt à donner vie à vos projets ?</h2>
-                            <p class="text-xl text-gray-300">
-                                Contactez-nous dès aujourd'hui pour discuter de vos besoins en impression et création graphique.
-                            </p>
-                        </div>
-                        <div class="lg:w-1/2 flex justify-center lg:justify-end">
-                            <a href="#contact" class="bg-gradient-to-r from-cyan to-magenta text-white px-10 py-5 rounded-full font-semibold text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                                Demander un devis
-                                <i class="fas fa-arrow-right ml-2"></i>
+            <section class="py-20 bg-black relative overflow-hidden">
+                <!-- Floating background elements -->
+                <div class="absolute inset-0 overflow-hidden opacity-10">
+                    <div class="absolute top-0 left-0 w-64 h-64 rounded-full bg-cyan blur-3xl"></div>
+                    <div class="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-magenta blur-3xl"></div>
+                </div>
+                
+                <div class="container mx-auto px-6 relative">
+                    <div class="glass-effect rounded-3xl p-12 md:p-16 text-center border border-white/10">
+                        <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">Prêt à donner vie à <span class="gradient-text">vos projets</span> ?</h2>
+                        <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+                            Contactez-nous dès aujourd'hui pour discuter de vos besoins en impression et création graphique.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center gap-6">
+                            <a href="#contact" class="relative px-8 py-4 rounded-full font-semibold text-lg group overflow-hidden hover-scale">
+                                <span class="absolute inset-0 bg-gradient-to-r from-cyan to-magenta group-hover:opacity-90 transition-opacity duration-300"></span>
+                                <span class="relative z-10 flex items-center justify-center">
+                                    Demander un devis
+                                    <i class="fas fa-arrow-right ml-2"></i>
+                                </span>
+                            </a>
+                            <a href="tel:+212612345678" class="relative px-8 py-4 rounded-full font-semibold text-lg group overflow-hidden hover-scale">
+                                <span class="absolute inset-0 border-2 border-white group-hover:bg-white/10 transition-colors duration-300"></span>
+                                <span class="relative z-10 flex items-center justify-center">
+                                    <i class="fas fa-phone mr-2"></i>
+                                    Nous appeler
+                                </span>
                             </a>
                         </div>
                     </div>
@@ -903,61 +1121,67 @@
             </section>
 
             <!-- Contact Section -->
-            <section id="contact" class="py-20 bg-white">
-                <div class="container mx-auto px-6">
+            <section id="contact" class="py-20 bg-dark relative overflow-hidden">
+                <!-- Floating background elements -->
+                <div class="absolute inset-0 overflow-hidden opacity-10">
+                    <div class="absolute top-0 right-0 w-64 h-64 rounded-full bg-magenta blur-3xl"></div>
+                    <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-yellow blur-3xl"></div>
+                </div>
+                
+                <div class="container mx-auto px-6 relative">
                     <div class="flex flex-col lg:flex-row">
                         <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
-                            <span class="inline-block px-4 py-2 bg-cyan-100 text-cyan rounded-full font-medium mb-4">Contact</span>
-                            <h2 class="text-4xl md:text-5xl font-bold mb-8">Travaillons ensemble</h2>
-                            <p class="text-xl text-gray-600 mb-10">
+                            <span class="inline-block px-4 py-2 bg-cyan/10 text-cyan rounded-full font-medium mb-4">Contact</span>
+                            <h2 class="text-4xl md:text-5xl font-display font-bold mb-8">Travaillons <span class="gradient-text">ensemble</span></h2>
+                            <p class="text-xl text-gray-400 mb-10">
                                 Que vous ayez un projet précis ou simplement des questions, notre équipe est là pour vous aider.
                             </p>
                             
-                            <div class="space-y-8">
-                                <div class="flex items-start">
-                                    <div class="bg-cyan text-white p-3 rounded-lg mr-4 flex-shrink-0">
+                            <div class="space-y-6">
+                                <div class="flex items-start glass-effect p-5 rounded-xl border border-white/10">
+                                    <div class="bg-gradient-to-r from-cyan to-magenta text-white p-3 rounded-lg mr-4 flex-shrink-0">
                                         <i class="fas fa-map-marker-alt text-xl"></i>
                                     </div>
                                     <div>
                                         <h4 class="text-xl font-bold mb-2">Adresse</h4>
-                                        <p class="text-gray-600">
+                                        <p class="text-gray-400">
                                             123 Avenue Mohammed V<br>
                                             Casablanca, Maroc
                                         </p>
                                     </div>
                                 </div>
                                 
-                                <div class="flex items-start">
-                                    <div class="bg-magenta text-white p-3 rounded-lg mr-4 flex-shrink-0">
+                                <div class="flex items-start glass-effect p-5 rounded-xl border border-white/10">
+                                    <div class="bg-gradient-to-r from-magenta to-yellow text-white p-3 rounded-lg mr-4 flex-shrink-0">
                                         <i class="fas fa-phone-alt text-xl"></i>
                                     </div>
                                     <div>
                                         <h4 class="text-xl font-bold mb-2">Téléphone</h4>
-                                        <p class="text-gray-600">
+                                        <p class="text-gray-400">
                                             <a href="tel:+212612345678" class="hover:text-cyan transition-colors duration-300">+212 6 12 34 56 78</a>
                                         </p>
                                     </div>
                                 </div>
                                 
-                                <div class="flex items-start">
-                                    <div class="bg-yellow text-black p-3 rounded-lg mr-4 flex-shrink-0">
+                                <div class="flex items-start glass-effect p-5 rounded-xl border border-white/10">
+                                    <div class="bg-gradient-to-r from-yellow to-cyan text-black p-3 rounded-lg mr-4 flex-shrink-0">
                                         <i class="fas fa-envelope text-xl"></i>
                                     </div>
                                     <div>
                                         <h4 class="text-xl font-bold mb-2">Email</h4>
-                                        <p class="text-gray-600">
+                                        <p class="text-gray-400">
                                             <a href="mailto:contact@hixystudio.com" class="hover:text-cyan transition-colors duration-300">contact@hixystudio.com</a>
                                         </p>
                                     </div>
                                 </div>
                                 
-                                <div class="flex items-start">
-                                    <div class="bg-black text-white p-3 rounded-lg mr-4 flex-shrink-0">
+                                <div class="flex items-start glass-effect p-5 rounded-xl border border-white/10">
+                                    <div class="bg-white text-black p-3 rounded-lg mr-4 flex-shrink-0">
                                         <i class="fas fa-clock text-xl"></i>
                                     </div>
                                     <div>
                                         <h4 class="text-xl font-bold mb-2">Heures d'ouverture</h4>
-                                        <p class="text-gray-600">
+                                        <p class="text-gray-400">
                                             Lundi - Vendredi: 9h - 18h<br>
                                             Samedi: 9h - 13h
                                         </p>
@@ -967,26 +1191,26 @@
                         </div>
                         
                         <div class="lg:w-1/2">
-                            <div class="bg-gray-50 p-8 md:p-12 rounded-2xl shadow-lg">
+                            <div class="glass-effect p-8 md:p-12 rounded-2xl border border-white/10">
                                 <h3 class="text-2xl font-bold mb-6">Envoyez-nous un message</h3>
                                 <form>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                         <div>
-                                            <label for="name" class="block text-gray-700 font-medium mb-2">Nom complet</label>
-                                            <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent" required>
+                                            <label for="name" class="block text-gray-300 font-medium mb-2">Nom complet</label>
+                                            <input type="text" id="name" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent" required>
                                         </div>
                                         <div>
-                                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-                                            <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent" required>
+                                            <label for="email" class="block text-gray-300 font-medium mb-2">Email</label>
+                                            <input type="email" id="email" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent" required>
                                         </div>
                                     </div>
                                     <div class="mb-6">
-                                        <label for="phone" class="block text-gray-700 font-medium mb-2">Téléphone</label>
-                                        <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent">
+                                        <label for="phone" class="block text-gray-300 font-medium mb-2">Téléphone</label>
+                                        <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent">
                                     </div>
                                     <div class="mb-6">
-                                        <label for="service" class="block text-gray-700 font-medium mb-2">Service intéressé</label>
-                                        <select id="service" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent">
+                                        <label for="service" class="block text-gray-300 font-medium mb-2">Service intéressé</label>
+                                        <select id="service" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent">
                                             <option value="">Sélectionnez un service</option>
                                             <option value="standard">Impression Standard</option>
                                             <option value="grand-format">Grand Format</option>
@@ -995,11 +1219,15 @@
                                         </select>
                                     </div>
                                     <div class="mb-6">
-                                        <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
-                                        <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent" required></textarea>
+                                        <label for="message" class="block text-gray-300 font-medium mb-2">Message</label>
+                                        <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent" required></textarea>
                                     </div>
-                                    <button type="submit" class="w-full bg-gradient-to-r from-cyan to-magenta text-white py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300">
-                                        Envoyer le message
+                                    <button type="submit" class="w-full relative px-8 py-4 rounded-full font-semibold text-lg group overflow-hidden hover-scale">
+                                        <span class="absolute inset-0 bg-gradient-to-r from-cyan to-magenta group-hover:opacity-90 transition-opacity duration-300"></span>
+                                        <span class="relative z-10 flex items-center justify-center">
+                                            Envoyer le message
+                                            <i class="fas fa-paper-plane ml-2"></i>
+                                        </span>
                                     </button>
                                 </form>
                             </div>
@@ -1008,94 +1236,96 @@
                 </div>
             </section>
 
-                        <!-- Map Section -->
-                        <div class="h-96 w-full relative">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.349834678535!2d-7.632787684798334!3d33.59639528073245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d3731f922c01%3A0x5e46c1e1fc83142!2sAvenue%20Mohammed%20V%2C%20Casablanca!5e0!3m2!1sen!2sma!4v1623256789019!5m2!1sen!2sma" 
-                                    width="100%" 
-                                    height="100%" 
-                                    style="border:0;" 
-                                    allowfullscreen="" 
-                                    loading="lazy"
-                                    class="absolute inset-0"></iframe>
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
-                        </div>
+            <!-- Map Section -->
+            <div class="h-96 w-full relative">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.349834678535!2d-7.632787684798334!3d33.59639528073245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d3731f922c01%3A0x5e46c1e1fc83142!2sAvenue%20Mohammed%20V%2C%20Casablanca!5e0!3m2!1sen!2sma!4v1623256789019!5m2!1sen!2sma" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        class="absolute inset-0"></iframe>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
+            </div>
 
             <!-- Footer -->
-            <footer class="bg-black text-white py-16">
+            <footer class="bg-black py-16 border-t border-white/10">
                 <div class="container mx-auto px-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                         <div>
                             <a href="#" class="text-3xl font-bold block mb-6">
-                                <img src="images/logo.png" width="40px" alt="">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-r from-cyan to-magenta flex items-center justify-center text-white font-display">
+                                    HX
+                                </div>
                             </a>
                             <p class="text-gray-400 mb-6">
-                                4 talents, une seule empreinte. Votre partenaire en impression professionnelle et création graphique.
+                                4 talents, une empreinte unique. Votre partenaire en impression professionnelle et création graphique.
                             </p>
                             <div class="flex space-x-4">
-                                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-cyan hover:text-white transition-colors duration-300">
+                                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-cyan hover:text-white transition-colors duration-300">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
-                                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-magenta hover:text-white transition-colors duration-300">
+                                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-magenta hover:text-white transition-colors duration-300">
                                     <i class="fab fa-instagram"></i>
                                 </a>
-                                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-cyan hover:text-white transition-colors duration-300">
+                                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-cyan hover:text-white transition-colors duration-300">
                                     <i class="fab fa-linkedin-in"></i>
                                 </a>
-                                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-magenta hover:text-white transition-colors duration-300">
-                                    <i class="fab fa-twitter"></i>
+                                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-magenta hover:text-white transition-colors duration-300">
+                                    <i class="fab fa-behance"></i>
                                 </a>
                             </div>
                         </div>
                         
                         <div>
-                            <h4 class="text-xl font-bold mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-cyan after:to-magenta">Services</h4>
+                            <h4 class="text-xl font-bold mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-gradient-to-r after:from-cyan after:to-magenta">Services</h4>
                             <ul class="space-y-3">
                                 <li><a href="#" class="text-gray-400 hover:text-cyan transition-colors duration-300 flex items-center">
-                                    <i class="fas fa-chevron-right text-xs mr-2"></i> Impression Standard
+                                    <i class="fas fa-chevron-right text-xs mr-2 text-cyan"></i> Impression Standard
                                 </a></li>
                                 <li><a href="#" class="text-gray-400 hover:text-cyan transition-colors duration-300 flex items-center">
-                                    <i class="fas fa-chevron-right text-xs mr-2"></i> Grand Format
+                                    <i class="fas fa-chevron-right text-xs mr-2 text-cyan"></i> Grand Format
                                 </a></li>
                                 <li><a href="#" class="text-gray-400 hover:text-cyan transition-colors duration-300 flex items-center">
-                                    <i class="fas fa-chevron-right text-xs mr-2"></i> Création Graphique
+                                    <i class="fas fa-chevron-right text-xs mr-2 text-cyan"></i> Création Graphique
                                 </a></li>
                                 <li><a href="#" class="text-gray-400 hover:text-cyan transition-colors duration-300 flex items-center">
-                                    <i class="fas fa-chevron-right text-xs mr-2"></i> Solutions Écologiques
+                                    <i class="fas fa-chevron-right text-xs mr-2 text-cyan"></i> Solutions Écologiques
                                 </a></li>
                                 <li><a href="#" class="text-gray-400 hover:text-cyan transition-colors duration-300 flex items-center">
-                                    <i class="fas fa-chevron-right text-xs mr-2"></i> Devis Gratuit
+                                    <i class="fas fa-chevron-right text-xs mr-2 text-cyan"></i> Devis Gratuit
                                 </a></li>
                             </ul>
                         </div>
                         
                         <div>
-                            <h4 class="text-xl font-bold mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-cyan after:to-magenta">Liens Utiles</h4>
+                            <h4 class="text-xl font-bold mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-gradient-to-r after:from-cyan after:to-magenta">Liens Utiles</h4>
                             <ul class="space-y-3">
                                 <li><a href="#" class="text-gray-400 hover:text-cyan transition-colors duration-300 flex items-center">
-                                    <i class="fas fa-chevron-right text-xs mr-2"></i> À propos
+                                    <i class="fas fa-chevron-right text-xs mr-2 text-cyan"></i> À propos
                                 </a></li>
                                 <li><a href="#" class="text-gray-400 hover:text-cyan transition-colors duration-300 flex items-center">
-                                    <i class="fas fa-chevron-right text-xs mr-2"></i> Portfolio
+                                    <i class="fas fa-chevron-right text-xs mr-2 text-cyan"></i> Portfolio
                                 </a></li>
                                 <li><a href="#" class="text-gray-400 hover:text-cyan transition-colors duration-300 flex items-center">
-                                    <i class="fas fa-chevron-right text-xs mr-2"></i> Équipe
+                                    <i class="fas fa-chevron-right text-xs mr-2 text-cyan"></i> Équipe
                                 </a></li>
                                 <li><a href="#" class="text-gray-400 hover:text-cyan transition-colors duration-300 flex items-center">
-                                    <i class="fas fa-chevron-right text-xs mr-2"></i> Témoignages
+                                    <i class="fas fa-chevron-right text-xs mr-2 text-cyan"></i> Témoignages
                                 </a></li>
                                 <li><a href="#" class="text-gray-400 hover:text-cyan transition-colors duration-300 flex items-center">
-                                    <i class="fas fa-chevron-right text-xs mr-2"></i> Contact
+                                    <i class="fas fa-chevron-right text-xs mr-2 text-cyan"></i> Contact
                                 </a></li>
                             </ul>
                         </div>
                         
                         <div>
-                            <h4 class="text-xl font-bold mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-cyan after:to-magenta">Newsletter</h4>
+                            <h4 class="text-xl font-bold mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-gradient-to-r after:from-cyan after:to-magenta">Newsletter</h4>
                             <p class="text-gray-400 mb-6">
                                 Abonnez-vous pour recevoir nos offres spéciales et actualités.
                             </p>
                             <form class="flex">
-                                <input type="email" placeholder="Votre email" class="px-4 py-3 rounded-l-lg border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent w-full">
+                                <input type="email" placeholder="Votre email" class="px-4 py-3 rounded-l-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent w-full">
                                 <button type="submit" class="bg-gradient-to-r from-cyan to-magenta text-white px-4 rounded-r-lg hover:shadow-lg transition-all duration-300">
                                     <i class="fas fa-paper-plane"></i>
                                 </button>
@@ -1103,7 +1333,7 @@
                         </div>
                     </div>
                     
-                    <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                    <div class="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
                         <p class="text-gray-500 text-sm mb-4 md:mb-0">
                             &copy; 2023 HIXY Studio. Tous droits réservés.
                         </p>
@@ -1119,11 +1349,24 @@
     </div>
 
     <!-- Back to top button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-cyan to-magenta text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50">
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-cyan to-magenta text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50 hover:scale-110">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            gsap.to(preloader, {
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                onComplete: function() {
+                    preloader.style.display = 'none';
+                }
+            });
+        });
+
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const closeMenuButton = document.getElementById('close-menu');
@@ -1132,18 +1375,37 @@
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
+            gsap.from(mobileMenu, {
+                opacity: 0,
+                duration: 0.3,
+                ease: "power2.out"
+            });
         });
         
         closeMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            document.body.style.overflow = '';
+            gsap.to(mobileMenu, {
+                opacity: 0,
+                duration: 0.3,
+                ease: "power2.out",
+                onComplete: function() {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            });
         });
         
         // Close mobile menu when clicking on a link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = '';
+                gsap.to(mobileMenu, {
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: "power2.out",
+                    onComplete: function() {
+                        mobileMenu.classList.add('hidden');
+                        document.body.style.overflow = '';
+                    }
+                });
             });
         });
         
@@ -1157,14 +1419,21 @@
                 pauseOnHover: true,
                 arrows: false,
                 pagination: true,
+                classes: {
+                    pagination: 'splide__pagination custom-pagination',
+                    page: 'splide__pagination__page custom-page'
+                }
             }).mount();
         });
         
         // Initialize Lenis smooth scrolling
         const lenis = new Lenis({
-            lerp: 0.1,
+            lerp: 0.08,
             smooth: true,
             direction: 'vertical',
+            gestureDirection: 'vertical',
+            touchMultiplier: 1.5,
+            infinite: false
         });
         
         function raf(time) {
@@ -1179,10 +1448,10 @@
         
         lenis.on('scroll', (e) => {
             if (e.scroll > 100) {
-                header.classList.add('bg-white', 'shadow-md');
+                header.classList.add('bg-black', 'backdrop-blur-md', 'border-b', 'border-white/10');
                 header.classList.remove('bg-transparent');
             } else {
-                header.classList.remove('bg-white', 'shadow-md');
+                header.classList.remove('bg-black', 'backdrop-blur-md', 'border-b', 'border-white/10');
                 header.classList.add('bg-transparent');
             }
         });
@@ -1201,14 +1470,14 @@
         });
         
         backToTopButton.addEventListener('click', () => {
-            lenis.scrollTo(0, { duration: 1.5 });
+            lenis.scrollTo(0, { duration: 1.5, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
         });
         
         // GSAP animations
         gsap.registerPlugin(ScrollTrigger);
         
         // Animate elements on scroll
-        gsap.utils.toArray('.animate-on-scroll').forEach(element => {
+        gsap.utils.toArray('.hover-scale').forEach(element => {
             gsap.from(element, {
                 scrollTrigger: {
                     trigger: element,
@@ -1223,28 +1492,39 @@
         });
         
         // Animate hero elements
-        gsap.from('.hero h1', {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            delay: 0.3,
-            ease: "power3.out"
-        });
+        const heroTimeline = gsap.timeline();
+        heroTimeline
+            .from('.hero h1', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: "power3.out"
+            })
+            .from('.hero p', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: "power3.out"
+            }, "-=0.8")
+            .from('.hero-buttons', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: "power3.out"
+            }, "-=0.8");
         
-        gsap.from('.hero p', {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            delay: 0.6,
-            ease: "power3.out"
-        });
-        
-        gsap.from('.hero-buttons', {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            delay: 0.9,
-            ease: "power3.out"
+        // Parallax effect for images
+        gsap.utils.toArray('.parallax-image').forEach(image => {
+            gsap.to(image, {
+                yPercent: 20,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: image,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
         });
         
         // Animate service cards with stagger
@@ -1275,7 +1555,45 @@
             ease: "power3.out"
         });
         
-     
+        // Animate process steps
+        gsap.utils.toArray('.process-step').forEach((step, index) => {
+            gsap.from(step, {
+                scrollTrigger: {
+                    trigger: step,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 0,
+                x: index % 2 === 0 ? 50 : -50,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+        
+        // Custom cursor effect (optional)
+        /*
+        const cursor = document.createElement('div');
+        cursor.classList.add('custom-cursor');
+        document.body.appendChild(cursor);
+        
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, {
+                x: e.clientX,
+                y: e.clientY,
+                duration: 0.2,
+                ease: "power2.out"
+            });
+        });
+        
+        document.querySelectorAll('a, button').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.classList.add('cursor-hover');
+            });
+            element.addEventListener('mouseleave', () => {
+                cursor.classList.remove('cursor-hover');
+            });
+        });
+        */
     </script>
 </body>
 </html>
