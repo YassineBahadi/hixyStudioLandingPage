@@ -56,6 +56,37 @@
             }
         }
     </script>
+    <style>
+        /* Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .marquee {
+            animation: marquee 30s linear infinite;
+            will-change: transform;
+        }
+        
+        /* Pause animation on hover */
+        .relative:hover .marquee {
+            animation-play-state: paused;
+        }
+        
+        /* Logo hover effect */
+        /* .marquee img {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .marquee img:hover {
+            filter: grayscale(0);
+            opacity: 1;
+            transform: scale(1.1);
+        } */
+    </style>
+    
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -364,18 +395,34 @@
             </section>
 
             <!-- Clients Logo Cloud -->
-            <section class="py-16 bg-dark">
-                <div class="container mx-auto px-6">
-                    <p class="text-center text-gray-400 mb-10 text-lg">Ils nous font confiance</p>
-                    <div class="flex flex-wrap justify-center items-center gap-12 opacity-80">
-                        <img src="https://via.placeholder.com/160x80?text=Client+1&color=ffffff" alt="Client logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300">
-                        <img src="https://via.placeholder.com/160x80?text=Client+2&color=ffffff" alt="Client logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300">
-                        <img src="https://via.placeholder.com/160x80?text=Client+3&color=ffffff" alt="Client logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300">
-                        <img src="https://via.placeholder.com/160x80?text=Client+4&color=ffffff" alt="Client logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300">
-                        <img src="https://via.placeholder.com/160x80?text=Client+5&color=ffffff" alt="Client logo" class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300">
-                    </div>
+<section class="py-16  relative overflow-hidden">
+    <div class="container mx-auto px-6">
+        <p class="text-center  mb-10 text-lg">Ils nous font confiance</p>
+        
+        <!-- Logo Marquee Container -->
+        <div class="relative h-24 overflow-hidden">
+            <!-- First Marquee -->
+            <div class="absolute top-0 left-0 flex items-center h-full marquee">
+                <div class="flex space-x-16 px-4 items-center">
+                    <!-- Logos réels - Partie 1 -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/1200px-HP_logo_2012.svg.png" alt="HP" class="h-10 -0 hover:grayscale-0 transition-all duration-300">
+                    <img src="images/logo_01.png" alt="canon" class="h-10 grayscale-0 hover:grayscale-0 transition-all duration-300">
+
+                    <img src="images/ricoh-2-logo-svg-vector.svg" alt="Ricoh" class="h-10 grayscale-0 hover:grayscale-0 transition-all duration-300">
+                    <img src="images/Xerox-logo.png" alt="Xerox" class="h-10 grayscale-0 hover:grayscale-0 transition-all duration-300">
+                    <img src="images/Adobe_Creative_Cloud_rainbow_icon.svg.png" alt="Adobe" class="h-10 grayscale-0 hover:grayscale-0 transition-all duration-300">
+                    <img src="images/196-1967543_parrot-logo-png-parrot-drone-brand_(1).png" alt="Parrot" class="h-10 grayscale-0 hover:grayscale-0 transition-all duration-300">
+                    <img src="images/BMW.svg.png" alt="BMW" class="h-10 grayscale-0 hover:grayscale-0 transition-all duration-300">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/1200px-HP_logo_2012.svg.png" alt="HP" class="h-10 -0 hover:grayscale-0 transition-all duration-300">
+                    <img src="images/logo_01.png" alt="canon" class="h-10 grayscale-0 hover:grayscale-0 transition-all duration-300">
+
                 </div>
-            </section>
+            </div>
+            
+      
+        </div>
+    </div>
+</section>
 
             <!-- Services Section -->
             <section id="services" class="py-20 bg-black relative overflow-hidden">
@@ -862,7 +909,7 @@
                         <!-- Team member 1 -->
                         <div class="group glass-effect rounded-2xl overflow-hidden transition-all duration-500 hover-scale border border-white/10">
                             <div class="relative h-80 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                <img src="images/360_F_97000908_wwH2goIihwrMoeV9QF3BW6HtpsVFaNVM.jpg" 
                                      alt="Hamza" 
                                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
@@ -892,7 +939,7 @@
                         <!-- Team member 2 -->
                         <div class="group glass-effect rounded-2xl overflow-hidden transition-all duration-500 hover-scale border border-white/10">
                             <div class="relative h-80 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                <img src="images/360_F_97000908_wwH2goIihwrMoeV9QF3BW6HtpsVFaNVM.jpg" 
                                      alt="Ilyass" 
                                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
@@ -922,7 +969,7 @@
                         <!-- Team member 3 -->
                         <div class="group glass-effect rounded-2xl overflow-hidden transition-all duration-500 hover-scale border border-white/10">
                             <div class="relative h-80 overflow-hidden">
-                                <img src="images/yassine.jpeg" 
+                                <img src="images/360_F_97000908_wwH2goIihwrMoeV9QF3BW6HtpsVFaNVM.jpg" 
                                      alt="Yassine" 
                                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
@@ -952,7 +999,7 @@
                         <!-- Team member 4 -->
                         <div class="group glass-effect rounded-2xl overflow-hidden transition-all duration-500 hover-scale border border-white/10">
                             <div class="relative h-80 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                <img src="images/360_F_97000908_wwH2goIihwrMoeV9QF3BW6HtpsVFaNVM.jpg" 
                                      alt="Youssef" 
                                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
@@ -1145,8 +1192,8 @@
                                     <div>
                                         <h4 class="text-xl font-bold mb-2">Adresse</h4>
                                         <p class="text-gray-400">
-                                            123 Avenue Mohammed V<br>
-                                            Casablanca, Maroc
+                                            LT Bloc D Riad salam, 11 Bd Mohamed VI,<br>
+                                            Mohammédia, Maroc
                                         </p>
                                     </div>
                                 </div>
@@ -1592,6 +1639,80 @@
             });
         });
         */
+        // Animate logos with infinite horizontal scroll
+const logosContainer = document.querySelector('.flex.flex-wrap.justify-center.items-center.gap-12');
+const logos = document.querySelectorAll('.logo-item');
+
+if (logosContainer && logos.length > 0) {
+    // Duplicate logos for infinite effect
+    logos.forEach(logo => {
+        const clone = logo.cloneNode(true);
+        logosContainer.appendChild(clone);
+    });
+
+    // Animation
+    gsap.to('.logo-item', {
+        xPercent: -100,
+        ease: "none",
+        duration: 30,
+        repeat: -1,
+        modifiers: {
+            xPercent: gsap.utils.wrap(-100, 0)
+        }
+    });
+
+    // Individual logo animations on hover
+    logos.forEach(logo => {
+        logo.addEventListener('mouseenter', () => {
+            gsap.to(logo, {
+                y: -10,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+        
+        logo.addEventListener('mouseleave', () => {
+            gsap.to(logo, {
+                y: 0,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+    });
+
+     // GSAP Animation for smoother performance (optional enhancement)
+     document.addEventListener('DOMContentLoaded', function() {
+        const marquees = document.querySelectorAll('.marquee');
+        
+        marquees.forEach(marquee => {
+            // Clone logos for infinite loop
+            const logos = marquee.querySelector('div');
+            const clone = logos.cloneNode(true);
+            marquee.appendChild(clone);
+            
+            // GSAP animation (alternative to CSS animation)
+            gsap.to(marquee, {
+                xPercent: -100,
+                duration: 30,
+                ease: "none",
+                repeat: -1
+            });
+        });
+        
+        // Scroll trigger animation for the whole section
+        gsap.from(".relative.h-24", {
+            scrollTrigger: {
+                trigger: ".relative.h-24",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power3.out"
+        });
+    });
+}
     </script>
 </body>
 </html>
